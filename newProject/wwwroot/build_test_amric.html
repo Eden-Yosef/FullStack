@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Web Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />            
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+
+    <style>
+        @media (max-width: 768px) {
+            .col-sm-3, .col-sm-4, .col-sm-5 {
+                margin-top: 30px;
+            }
+
+            .formTest {
+                margin-top: auto !important;
+            }
+
+            h2 {
+                font-size: 25px !important;
+                text-align: center;
+            }
+
+            th {
+                margin-left: 50px;
+            }
+        }
+
+        body {
+            height: 100%;
+            min-height: 100vh;
+            font-family: 'Jost', sans-serif;
+            background: linear-gradient(to bottom, #040548, #3e3785, #24243e);
+        }
+
+        nav {
+            background: transparent;
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        ul {
+            font-family: "Chivo Mono", monospace;
+            display: flex;
+            align-items: center;
+            margin-bottom: 0 !important;
+        }
+
+            ul li {
+                list-style: none;
+            }
+
+                ul li a {
+                    font-size: 22px;
+                    font-weight: 600;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    color: white;
+                    transition: 0.5s ease;
+                }
+
+            ul:hover li a {
+                color: #ffcb49;
+            }
+
+                ul:hover li a:not(:hover) {
+                    color: white;
+                    opacity: 0.3;
+                    filter: blur(1px);
+                }
+
+        ol, ul {
+            padding-left: 1rem;
+        }
+
+
+        @keyframes pulse512 {
+            0% {
+                box-shadow: 0 0 0 0 #05bada66;
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+            }
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 40px;
+            font-weight: 550;
+            font-family: system-ui;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            margin-top: 110px;
+        }
+
+        .formTest {
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 14px 14px 20px #000136, -14px -14px 20px #0e105a96;
+            background: rgba(255, 255, 255, 0.049);
+        }
+
+            .formTest .input-box {
+                height: 52px;
+                margin: 18px 0;
+            }
+
+                .formTest .input-box input {
+                    height: 100%;
+                    width: 100%;
+                    outline: none;
+                    padding: 0 15px;
+                    font-size: 17px;
+                    font-weight: 400;
+                    color: #333;
+                    border: 1.5px solid #C7BEBE;
+                    border-bottom-width: 2.5px;
+                    border-radius: 6px;
+                    transition: all 0.3s ease;
+                }
+
+        .input-box input:focus,
+        .input-box input:valid {
+            border-color: #040548;
+        }
+
+        .formTest .policy {
+            display: flex;
+            align-items: center;
+        }
+
+        .formTest h3 {
+            color: #707070;
+            font-size: 14px;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+
+        .input-box.button input {
+            color: #fff;
+            letter-spacing: 1px;
+            border: none;
+            background: #040548;
+            cursor: pointer;
+        }
+
+            .input-box.button input:hover {
+                background: #2d4587;
+            }
+
+        .formTest .text h3 {
+            color: #333;
+            width: 100%;
+            text-align: center;
+        }
+
+            .formTest .text h3 a {
+                color: #0f3ab2;
+                text-decoration: none;
+            }
+
+                .formTest .text h3 a:hover {
+                    text-decoration: underline;
+                }
+
+        label {
+            background-color: #040548a4;
+            color: white;
+            padding: 0.5rem;
+            font-family: sans-serif;
+            border-radius: 0.3rem;
+            cursor: pointer;
+        }
+
+        #file-chosen {
+            margin-left: 0.3rem;
+            font-family: sans-serif;
+        }
+
+        th {
+            font-size: 20px;
+            font-weight: 550;
+            font-family: system-ui;
+            display: flex;
+            color: white !important;
+        }
+
+        .btn_add_question {
+            background-image: linear-gradient(30deg, #070863, #3e3785);
+            border: none;
+            color: #fff;
+            border-radius: 10px;
+            background-size: 100% auto;
+            font-family: inherit;
+            font-size: 17px;
+            padding: 0.6em 1.5em;
+        }
+
+        .table-striped > tbody > tr:nth-of-type(odd) > * {
+            color: #fff;
+        }
+
+        .table-striped > tbody > tr:nth-of-type(even) > * {
+            color: #fff;
+        }
+
+        h2 {
+            font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+            ;
+            text-transform: uppercase;
+            font-size: 30px;
+            color: #f1ebe5;
+            text-shadow: 0 8px 9px #3e3785, 0px -1px 5px #f7ae38;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+        }
+
+        #btn_delete {
+            border: none;
+            color: #fff;
+            background-image: linear-gradient(30deg, #070863, #3e3785);
+            border-radius: 10px;
+            background-size: 100% auto;
+            font-family: inherit;
+            font-size: 17px;
+            padding: 0.4em 0.8em;
+            float: right;
+        }
+
+        .btn_save {
+            border: none;
+            color: #fff;
+            border-radius: 10px;
+            background-size: 100% auto;
+            font-family: inherit;
+            font-size: 17px;
+            padding: 0.6em 1.5em;
+            background: #040548;
+            width: 100%;
+            justify-content: center;
+        }
+    </style>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a href="home_page.html" class="navbar-brand">
+                <img src="images/LogoNavbar.png" alt="Logo" class="d-inline-block align-text-top" height="70" width="70">
+            </a>
+            <button type="button" class="navbar-toggler navbar-dark" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item nav-link"><a href="home_page.html">Home</a></li>
+                    <li class="nav-item nav-link"><a href="add_test.html">Add Test</a></li>
+                    <li class="nav-item nav-link"><a href="graphs.html">Statistics & Graphs</a></li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item nav-link"><a href="add_test.html">Back</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="row" style="display: flex; flex-wrap: wrap;">
+        <div class="col-sm-3">
+            <div class="container" style="justify-content: center; display:flex; align-items: center;">
+                <form class="formTest">
+                    <div class="title_details" style="margin-bottom: 40px;">
+                        <h2>Test details:</h2>
+                    </div>
+                    <div class="input-box">
+                        <input id="Name_test" type="text" placeholder="Name test" required />
+                    </div>
+                    <div class="input-box">
+                        <input id="Id_test" type="text" placeholder="Id test" required />
+                    </div>
+                    <div class="input-box">
+                        <input id="Name_Lecturer" type="text" placeholder="Name lecturer" required />
+                    </div>
+                    <div class="input-box">
+                        <input id="Date_test" type="date" placeholder="Date test" required />
+                    </div>
+                    <div class="input-box">
+                        <input id="Start_hour" type="time" placeholder="Start hour" required />
+                    </div>
+                    <div class="input-box">
+                        <input id="Total_time" type="text" placeholder="Total time (Hours)" pattern="[0-9]+(\.[0-9]{1,2})?%?" required />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="container" style="justify-content: center; align-items: center;">
+                <form class="formTest">
+                    <div class="title" style="margin-bottom: 40px;">
+                        <h2>Add questions form:</h2>
+                    </div>
+
+                    <div class="input-box">
+                        <input id="question" type="text" placeholder="Write a question">
+                    </div>
+
+                    <div class="input-box">
+                        <input type="file" id="actual-btn" hidden />
+                        <label for="actual-btn">Choose File</label>
+                        <span id="file-chosen" style="color: white;">No file chosen</span>
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <div class="input-box" style="display: inline-flex;">
+                            <input id="correct_answer" type="text" placeholder="correct answer" required />
+                            <input id="wrong_answer_1" type="text" placeholder="wrong answer 1">
+                        </div>
+                        <div class="input-box" style="display: inline-flex;">
+                            <input id="wrong_answer_2" type="text" placeholder="wrong answer 2">
+                            <input id="wrong_answer_3" type="text" placeholder="wrong answer 3">
+                        </div>
+                    </div>
+
+                    <div style="text-align: -webkit-center;">
+                        <button class="btn_add_question" onclick="add_question(); return false;">ADD QUESTION</button>
+                        <p id="demo" style="color: rgb(255, 191, 71);"></p>
+                    </div>
+
+                    <div class="input-box button" style="margin-top: 35px;">
+                        <button class="btn_save" onclick="Finish(); return false;">FINISH</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="container" style="word-break: break-word;">
+                <table id="myTable" class="table table-striped"  style="width: 80%;">
+                    <thead>
+                        <tr>
+                            <th style="color: white;">Questions:</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="build_test_amric.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+</body>
+</html>

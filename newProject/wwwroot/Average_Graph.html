@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="Average_Graph.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <title>Web Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+
+        body {
+            height: 100%;
+            min-height: 100vh;
+            font-family: 'Jost', sans-serif;
+            background: linear-gradient(to bottom, #040548, #3e3785, #24243e);
+        }
+
+        nav {
+            background: transparent;
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        ul {
+            font-family: "Chivo Mono", monospace;
+            display: flex;
+            align-items: center;
+            margin-bottom: 0 !important;
+        }
+
+            ul li {
+                list-style: none;
+            }
+
+                ul li a {
+                    font-size: 22px;
+                    font-weight: 600;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    color: white;
+                    transition: 0.5s ease;
+                }
+
+            ul:hover li a {
+                color: #ffcb49;
+            }
+
+                ul:hover li a:not(:hover) {
+                    color: white;
+                    opacity: 0.3;
+                    filter: blur(1px);
+                }
+
+        ol, ul {
+            padding-left: 1rem;
+        }
+
+
+        button {
+            border: none;
+            color: #fff;
+            background-image: linear-gradient(30deg, #070863, #3e3785);
+            border-radius: 10px;
+            background-size: 100% auto;
+            font-family: inherit;
+            font-size: 17px;
+            padding: 0.6em 1.5em;
+        }
+
+            button:hover {
+                background-position: right center;
+                background-size: 200% auto;
+                -webkit-animation: pulse 2s infinite;
+                animation: pulse512 1.5s infinite;
+            }
+
+        @keyframes pulse512 {
+            0% {
+                box-shadow: 0 0 0 0 #05bada66;
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+            }
+        }
+
+        .container {
+            font-family: sans-serif;
+            margin-top: 100px;
+            width: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .table-custom {
+            border-collapse: collapse;
+            box-shadow: 0 0 20px #0000001a;
+            width: 100%;
+        }
+
+            .table-custom td,
+            .table-custom th {
+                padding: 15px;
+                background-color: #6058bb;
+                color: #fff;
+                text-align: center;
+                border-bottom: none;
+            }
+
+            .table-custom th {
+                background-color: #393288;
+            }
+
+            .table-custom tbody tr:hover td {
+                background-color: rgba(255, 255, 255, 0.064);
+            }
+
+                .table-custom tbody tr:hover td::before {
+                    background-color: #6058bb;
+                }
+    </style>
+    </head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a href="home_student.html" class="navbar-brand"><img src="images/LogoNavbar.png" alt="Logo" class="d-inline-block align-text-top" height="70" width="70"></a>
+            <button type="button" class="navbar-toggler navbar-dark" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item nav-link"><a href="home_student.html">Home</a></li>
+                    <li class="nav-item nav-link"><a href="Average_Graph.html">Average & Graph</a></li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item nav-link"><a href="registration.html">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+        <div class="container">
+            <div class="table-responsive">
+                    <table class="table table-custom">
+                        <thead>
+                            <tr>
+                                <th id="avg" style="font-size:large;"></th>
+                            </tr>
+                        </thead>
+                        </table>
+                        <table class="table table-custom" id="myTable">
+                            <thead>
+                                <tr>
+                                    <th>NAME TEST</th>
+                                    <th>ID TEST</th>
+                                    <th>DATE</th>
+                                    <th>START HOUR</th>
+                                    <th>TOTAL TIME</th>
+                                    <th>VIEW GRAPH</th>
+
+                                </tr>
+                            </thead>
+                            <tbody id="examsInTable">
+                               
+                            </tbody>
+                        </table>
+                </div>
+            </div>
+
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+</body>
+</html>
